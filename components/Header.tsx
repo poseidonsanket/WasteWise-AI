@@ -18,7 +18,7 @@ import { EthereumPrivateKeyProvider } from "@web3auth/ethereum-provider"
 import { useMediaQuery } from "@/hooks/useMediaQuery"
 import { createUser, getUnreadNotifications, markNotificationAsRead, getUserByEmail, getUserBalance } from "@/utils/db/actions"
 
-const clientId = "BJKdDFkNtkWX87XqkuWrDu4rbkSvWyQZ5lswS0ucINxxcN0inRVW8zzKAywPPzgiOHP7_3PcfFwfpvcQvSdaLRs";
+const clientId = process.env.NEXT_PUBLIC_WEB3_CLIENT;
 
 const chainConfig = {
   chainNamespace: CHAIN_NAMESPACES.EIP155,
@@ -205,12 +205,12 @@ export default function Header({ onMenuClick, totalEarnings }: HeaderProps) {
       <div className="flex items-center justify-between px-4 py-2">
         <div className="flex items-center">
           <Button variant="ghost" size="icon" className="mr-2 md:mr-4" onClick={onMenuClick}>
-            <Menu className="h-6 w-6" />
+            <Menu className="h-6 w-6 text-gray-600" />
           </Button>
           <Link href="/" className="flex items-center">
             <Leaf className="h-6 w-6 md:h-8 md:w-8 text-green-500 mr-1 md:mr-2" />
             <div className="flex flex-col">
-              <span className="font-bold text-base md:text-lg text-gray-800">Zero2Hero</span>
+              <span className="font-bold text-base md:text-lg text-gray-800">WasteWise Ai</span>
               <span className="text-[8px] md:text-[10px] text-gray-500 -mt-1">ETHOnline24</span>
             </div>
           </Link>
@@ -223,20 +223,20 @@ export default function Header({ onMenuClick, totalEarnings }: HeaderProps) {
                 placeholder="Search..."
                 className="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500"
               />
-              <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600" />
             </div>
           </div>
         )}
         <div className="flex items-center">
           {isMobile && (
             <Button variant="ghost" size="icon" className="mr-2">
-              <Search className="h-5 w-5" />
+              <Search className="h-5 w-5 text-gray-600" />
             </Button>
           )}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon" className="mr-2 relative">
-                <Bell className="h-5 w-5" />
+                <Bell className="h-5 w-5 text-gray-600" />
                 {notifications.length > 0 && (
                   <Badge className="absolute -top-1 -right-1 px-1 min-w-[1.2rem] h-5">
                     {notifications.length}
@@ -277,8 +277,8 @@ export default function Header({ onMenuClick, totalEarnings }: HeaderProps) {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon" className="flex items-center">
-                  <User className="h-5 w-5 mr-1" />
-                  <ChevronDown className="h-4 w-4" />
+                  <User className="h-5 w-5 mr-1 text-gray-600" />
+                  <ChevronDown className="h-4 w-4 text-gray-600" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
