@@ -56,7 +56,6 @@ export default function Header({ onMenuClick, totalEarnings }: HeaderProps) {
   const isMobile = useMediaQuery("(max-width: 768px)")
   const [balance, setBalance] = useState(0)
 
-  console.log('user info', userInfo);
   
   useEffect(() => {
     const init = async () => {
@@ -134,7 +133,6 @@ export default function Header({ onMenuClick, totalEarnings }: HeaderProps) {
 
   const login = async () => {
     if (!web3auth) {
-      console.log("web3auth not initialized yet");
       return;
     }
     try {
@@ -159,7 +157,6 @@ export default function Header({ onMenuClick, totalEarnings }: HeaderProps) {
 
   const logout = async () => {
     if (!web3auth) {
-      console.log("web3auth not initialized yet");
       return;
     }
     try {
@@ -215,24 +212,7 @@ export default function Header({ onMenuClick, totalEarnings }: HeaderProps) {
             </div>
           </Link>
         </div>
-        {!isMobile && (
-          <div className="flex-1 max-w-xl mx-4">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search..."
-                className="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-              <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600" />
-            </div>
-          </div>
-        )}
         <div className="flex items-center">
-          {isMobile && (
-            <Button variant="ghost" size="icon" className="mr-2">
-              <Search className="h-5 w-5 text-gray-600" />
-            </Button>
-          )}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon" className="mr-2 relative">
@@ -285,10 +265,6 @@ export default function Header({ onMenuClick, totalEarnings }: HeaderProps) {
                 <DropdownMenuItem onClick={getUserInfo}>
                   {userInfo ? userInfo.name : "Fetch User Info"}
                 </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/settings">Profile</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>Settings</DropdownMenuItem>
                 <DropdownMenuItem onClick={logout}>Sign Out</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
